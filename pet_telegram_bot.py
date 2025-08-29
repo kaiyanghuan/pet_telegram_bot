@@ -126,12 +126,16 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
 
     if text == "🍖 Feed":
+        print("feeding dog...")
         await feed(update, context, user_id)
     elif text == "🎾 Play":
+        print("playing with dog...")
         await play(update, context, user_id)
     elif text == "😴 Sleep":
+        print("dog sleeping...")
         await sleep(update, context, user_id)
     elif text == "📊 Status":
+        print("checking status of dog...")
         await status(update, context, user_id)
     else: 
         await update.message.reply_text("❓ Unknown action", reply_markup=main_keyboard)
