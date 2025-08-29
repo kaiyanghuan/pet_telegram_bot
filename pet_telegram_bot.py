@@ -136,10 +136,14 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else: 
         await update.message.reply_text("❓ Unknown action", reply_markup=main_keyboard)
 
+# Load token from environment variable
+TOKEN = os.getenv("TOKEN")
 
+if not TOKEN:
+    raise ValueError("⚠️ No TOKEN found! Please set the environment variable.")
 
 def main():
-    app = Application.builder().token("7330811920:AAE_6v4hs3pOSKND_TXLiiZtrBDv4PSngq0").build()
+    app = Application.builder().token(TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
     # app.add_handler(CallbackQueryHandler(button_handler))
